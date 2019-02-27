@@ -1,0 +1,5 @@
+project-id: ml-productive-pipeline-53122
+region: europe-west1
+bucket: ml-productive-pipeline-53122
+tf-version: 1.12
+pkg-name: pkg_mnist_fnn
