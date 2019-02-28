@@ -1,3 +1,10 @@
+# Slides on GCP ML-Engine
+
+Copied `reveal.js` into folder
+
+
+
+
 # Develop DL models using Tensorflow and pipelines for industrialization and model serving
 
 # TensorFlow and Google Cloud Platform (GCP) documentations and instructions
