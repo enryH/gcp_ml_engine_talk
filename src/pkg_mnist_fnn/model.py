@@ -3,9 +3,9 @@ First try to start Cloud ML
 
 References:
 Basic reference for packaging the model so that ml-engine can use it:
-- https://github.com/GoogleCloudPlatform/training-data-analyst/tree/master/courses/machine_learning/cloudmle/taxifare
+- github.com/GoogleCloudPlatform/training-data-analyst/tree/master/courses/machine_learning/cloudmle/taxifare
 MNIST-Estimator-Example:
-- https://codeburst.io/use-tensorflow-dnnclassifier-estimator-to-classify-mnist-dataset-a7222bf9f940
+- codeburst.io/use-tensorflow-dnnclassifier-estimator-to-classify-mnist-dataset-a7222bf9f940
 
 ipython -i -m src.models.test_model_estimator_api.mnist_ml_engine -- --data_path=data --output_dir=src\models\test_model_estimator_api\trained --train_steps=100
 """
@@ -14,24 +14,16 @@ import tensorflow as tf
 import numpy as np
 
 from .utils import load_data
-###############################################################################
+#########################################################################
 #Factor into config:
 N_PIXEL = 784
 OUTDIR = 'trained'
-USE_TPU = False
 EPOCHS = 5
-
-if USE_TPU:
-    _device_update = 'tpu'
-else:
-    _device_update = 'cpu'
 
 IMAGE_SIZE = 28 * 28
 NUM_LABELS = 10
 BATCH_SIZE = 128
 ###############################################################################
-
-
 def parse_images(x):
     return x.reshape(len(x), -1).astype('float32')
 
