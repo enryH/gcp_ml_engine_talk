@@ -1,7 +1,18 @@
-# Develop DL models using Tensorflow and pipelines for industrialization and model serving
+# Data Science Process in the Google Cloud
+
+The presentation were created in the scope of a project on tensorflow and Google Cloud Platform together with [Fabien Tarrade](https://twitter.com/fabtar), please visit [github/tarrade/proj_DL_models_and_pipelines_with_GCP](https://github.com/tarrade/proj_DL_models_and_pipelines_with_GCP/) for latest developments.
+
+Slides for 
+   - [Windows Users](https://enryh.github.io/gcp_ml_engine_talk/ml_engine_presentation_win.slides.html#/)
+   - [Linux/Mac Users](https://enryh.github.io/gcp_ml_engine_talk/ml_engine_presentation_bash.slides.html#/)
 
 
-## Fresh installation Anaconda
+Follow me on [twitter](https://twitter.com/Henrywebel).
+
+![Twitter]([http://i.imgur.com/tXSoThF.png)
+
+## Setup to execute presentation notebooks
+### Fresh installation Anaconda
 Install [Anaconda Distribution](https://www.anaconda.com/distribution/) on your system. This provides you with the most important packages
 on your system.
 
@@ -13,17 +24,16 @@ conda activate base
 conda install -c conda-forge jupyter_contrib_nbextensions #triggers system-wide installation
 ```
 
+
 ## Download the code from GitHub
 - go to the directory in which you want to download the package from git  
 - download the package from Github:   
-  - ```git clone https://github.com/tarrade/proj_DL_models_and_pipelines_with_GCP.git```
-  - or with other method from your choice (web interface, zip ...)   
-- open an "Anaconda prompt" in the directory that contain the code from GitHub:   
-  ```your_dir/proj_DL_models_and_pipelines_with_GCP/```
+  - ```git clone https://github.com/enryH/gcp_ml_engine_talk/```
+  - or download [zipped repository](https://github.com/enryH/gcp_ml_engine_talk/archive/dev.zip).
+- open a command line in the directory that contains the code from GitHub.
 
 ### Create the python conda env  
-This will provide you a unique list of python packages needed to run the code.
-It seems 1.12 is causing trouble on  a Mac, use 1.11 instead
+This will provide you a virtual environment of python packages needed to run the code.
 
 - create a python env based on a list of packages from environment.yml    
   ```conda env create -f environment.yml -n gcp_dl```
@@ -34,11 +44,17 @@ It seems 1.12 is causing trouble on  a Mac, use 1.11 instead
   > In case of issue clean all the cache in conda
   > ```conda clean -a```
 
+- In case you want to use [nbdime](https://nbdime.readthedocs.io/en/latest/) for checking differences in notebooks:
+
+  ```
+  nbdime config-git --enable --global
+  ```
+
 - In case you want to use interactive slides using [RISE](https://rise.readthedocs.io/en/5.4.1/installation.html):
 
   ```
   conda activate gcp_dl
-  conda install -c damianavila82 rise
+  conda install -c conda_forge rise
   ```
 
 ### Update or delete the python conda env 
@@ -48,8 +64,8 @@ It seems 1.12 is causing trouble on  a Mac, use 1.11 instead
 - delete the env to recreate it when too many changes are done  
   ```conda env remove -n gcp_dl```
 
-### TensorBoard
-- open a anaconda prompt
+## TensorBoard
+- open a command line
 - go to the directory in which you want to download the package from git  
 - activate the env:   
   ```conda activate gcp_dl```
@@ -59,8 +75,4 @@ It seems 1.12 is causing trouble on  a Mac, use 1.11 instead
   ```http://<something>:6006```
  
   
- ![alt text](./doc/img/plot1.PNG)  
- ![alt text](./doc/img/plot2.PNG)
-
-
-# Slides on GCP ML-Engine
+ ![alt text](./Images/tensorboard_screenshot.png)  
