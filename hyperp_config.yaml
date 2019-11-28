@@ -1,0 +1,21 @@
+trainingInput:
+  hyperparameters:
+    goal: MAXIMIZE
+    hyperparameterMetricTag: accuracy
+    maxTrials: 30
+    maxParallelTrials: 4
+    algorithm: ALGORITHM_UNSPECIFIED
+    params:
+      - parameterName: train_batch_size
+        type: INTEGER
+        minValue: 64
+        maxValue: 512
+        scaleType: UNIT_LINEAR_SCALE
+      - parameterName: hidden_units
+        type: CATEGORICAL
+        categoricalValues: ["256 128 64", "128 64 32", "512 256 128 64", "256 128 64 32"]
+      - parameterName: learning_rate
+        type: DOUBLE
+        minValue: 0.0001
+        maxValue: 0.1
+        scaleType: UNIT_LOG_SCALE

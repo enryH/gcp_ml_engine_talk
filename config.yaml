@@ -1,6 +1,8 @@
-#change at least your project ID
-project-id: ml-productive-pipeline-1234
-region: europe-west1
-bucket: ml-productive-pipeline-1234
-tf-version: 1.12
+bucket: bold-circuit-254311
+credentials: cred/My First Project-be9253caf389.json
+env-name: gcp_dl
 pkg-name: pkg_mnist_fnn
+project-id: bold-circuit-254311
+region: europe-west1
+testdatafile: data/mnist/json/ml_engine_testdatafile_N4.json
+tf-version: '1.13'

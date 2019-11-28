@@ -80,8 +80,8 @@ from matplotlib import pyplot as plt
 import numpy as np
 import json
 
-def plot_mnist_testdata(): 
-    with open("data/test.json", "r") as f:
+def plot_mnist_testdata(filepath="data/mnist/json/ml_engine_testdatafile_N4.json"): 
+    with open(filepath, "r") as f:
         images = f.readlines()
     plt.figure(figsize=(20,4))
     for i, image in enumerate(images):

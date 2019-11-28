@@ -12,4 +12,10 @@ package-lock.json
 .sass-cache
 css/reveal.min.css
 js/reveal.min.js
+
+*/__pycache__/*
 *.ipynb_checkpoints/
+*.pyc
+
+cred
+trained
