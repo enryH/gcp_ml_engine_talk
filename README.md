@@ -7,9 +7,7 @@ Slides for
    - [Linux/Mac Users](https://enryh.github.io/gcp_ml_engine_talk/ml_engine_presentation_bash.slides.html#/)
 
 
-Follow me on [twitter](https://twitter.com/Henrywebel).
-
-![Twitter]([http://i.imgur.com/tXSoThF.png)
+Follow me on [![twitter](Images/twitter.png)](https://twitter.com/Henrywebel).
 
 ## Setup to execute presentation notebooks
 ### Fresh installation Anaconda
