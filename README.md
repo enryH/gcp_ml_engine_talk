@@ -3,8 +3,8 @@
 The presentation were created in the scope of a project on tensorflow and Google Cloud Platform together with [Fabien Tarrade](https://twitter.com/fabtar), please visit [github/tarrade/proj_DL_models_and_pipelines_with_GCP](https://github.com/tarrade/proj_DL_models_and_pipelines_with_GCP/) for latest developments.
 
 Slides for 
-   - [Windows Users](https://enryh.github.io/gcp_ml_engine_talk/ml_engine_presentation_win.slides.html#/)
-   - [Linux/Mac Users](https://enryh.github.io/gcp_ml_engine_talk/ml_engine_presentation_bash.slides.html#/)
+   - [Windows Users](https://enryh.github.io/gcp_ml_engine_talk/ml_engine_presentation_win.slides.html#/), underlying [notebook](https://github.com/enryH/gcp_ml_engine_talk/blob/master/notebook/ml_engine_presentation_win.ipynb)  (in [nbviewer](https://nbviewer.jupyter.org/github/enryH/gcp_ml_engine_talk/blob/master/notebook/ml_engine_presentation_win.ipynb))
+   - [Linux/Mac Users](https://enryh.github.io/gcp_ml_engine_talk/ml_engine_presentation_bash.slides.html#/), view underlying [notebook](https://github.com/enryH/gcp_ml_engine_talk/blob/master/notebook/ml_engine_presentation_bash.ipynb) (in [nbviewer](https://nbviewer.jupyter.org/github/enryH/gcp_ml_engine_talk/blob/master/notebook/ml_engine_presentation_bash.ipynb))
 
 
 Follow me on [![twitter](Images/twitter.png)](https://twitter.com/Henrywebel).
