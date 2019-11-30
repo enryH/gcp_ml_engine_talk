@@ -1,7 +1,8 @@
-bucket: bold-circuit-254311
-credentials: cred/My First Project-be9253caf389.json
+bucket: ml-productive-pipeline-12345
+credentials: cred/service_acccount_123.json
 env-name: gcp_dl
 pkg-name: pkg_mnist_fnn
-project-id: bold-circuit-254311
+project-id: ml-productive-pipeline-12345
 region: europe-west1
+testdatafile: data/mnist/json/ml_engine_testdatafile_N4.json
 tf-version: '1.13'
