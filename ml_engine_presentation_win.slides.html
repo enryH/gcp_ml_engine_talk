@@ -13293,7 +13293,9 @@ a.anchor-link {
 <span class="n">REGION</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;region&#39;</span><span class="p">]</span> <span class="c1"># Choose an available region for Cloud MLE from https://cloud.google.com/ml-engine/docs/regions.</span>
 <span class="n">BUCKET</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;bucket&#39;</span><span class="p">]</span> <span class="c1"># REPLACE WITH YOUR BUCKET NAME. Use a regional bucket in the region you selected.</span>
 <span class="n">PKG_NAME</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;pkg-name&#39;</span><span class="p">]</span>
-<span class="k">try</span><span class="p">:</span> <span class="n">TEST_DATA_JSON</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;testdatafile&#39;</span><span class="p">]</span> 
+<span class="k">try</span><span class="p">:</span> 
+    <span class="n">TEST_DATA_JSON</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;testdatafile&#39;</span><span class="p">]</span> 
+    <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;TEST_DATA_JSON&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">TEST_DATA_JSON</span>
 <span class="k">except</span><span class="p">:</span> <span class="k">pass</span>
 
 <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PROJECT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">PROJECT</span>
@@ -13301,7 +13303,7 @@ a.anchor-link {
 <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;REGION&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">REGION</span> 
 <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;TFVERSION&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;tf-version&#39;</span><span class="p">])</span>  <span class="c1"># Tensorflow version 1.4 before</span>
 <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PKG_NAME&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">PKG_NAME</span>
-<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;TEST_DATA_JSON&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">TEST_DATA_JSON</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;GOOGLE_APPLICATION_CREDENTIALS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;credentials&#39;</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -13675,7 +13677,7 @@ gcloud config set ml_engine/local_python &quot;%PYTHON_LOCAL%&quot;
 <ul>
 <li><a href="https://console.cloud.google.com/bigquery">BigQuery</a> (BQ)</li>
 <li><a href="https://console.cloud.google.com/storage">Cloudstorage</a> (Buckets)</li>
-<li><a href="https://console.cloud.google.com/mlengine/">ML Engine</a></li>
+<li><a href="https://console.cloud.google.com/mlengine/">Ai Platform</a></li>
 <li>If time allows: Dataflow using Apache Beam</li>
 </ul>
 
@@ -13867,14 +13869,15 @@ config.yaml</code></pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># #Create config manually and save as yaml:</span>
+<span class="kn">import</span> <span class="nn">yaml</span>
 <span class="n">config</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="n">config</span><span class="p">[</span><span class="s1">&#39;project-id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;bold-circuit-254311&#39;</span>  <span class="c1"># # REPLACE WITH YOUR PROJECT ID</span>
+<span class="n">config</span><span class="p">[</span><span class="s1">&#39;project-id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;ml-productive-pipeline-12345&#39;</span>  <span class="c1"># # REPLACE WITH YOUR PROJECT ID</span>
 <span class="n">config</span><span class="p">[</span><span class="s1">&#39;region&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;europe-west1&#39;</span> <span class="c1"># Choose an available region for Cloud MLE from https://cloud.google.com/ml-engine/docs/regions.</span>
-<span class="n">config</span><span class="p">[</span><span class="s1">&#39;bucket&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;bold-circuit-254311&#39;</span>  <span class="c1"># REPLACE WITH YOUR BUCKET NAME. Use a regional bucket in the region you selected.</span>
+<span class="n">config</span><span class="p">[</span><span class="s1">&#39;bucket&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;ml-productive-pipeline-12345&#39;</span>  <span class="c1"># REPLACE WITH YOUR BUCKET NAME. Use a regional bucket in the region you selected.</span>
 <span class="n">config</span><span class="p">[</span><span class="s1">&#39;pkg-name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;pkg_mnist_fnn&#39;</span>
 <span class="n">config</span><span class="p">[</span><span class="s1">&#39;tf-version&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;1.13&#39;</span>
 <span class="n">config</span><span class="p">[</span><span class="s1">&#39;env-name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;gcp_dl&#39;</span>
-<span class="n">config</span><span class="p">[</span><span class="s1">&#39;credentials&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;cred/My First Project-be9253caf389.json&#39;</span>
+<span class="n">config</span><span class="p">[</span><span class="s1">&#39;credentials&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;cred/service_acccount_123.json&#39;</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;config.yaml&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span> <span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
       <span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="n">f</span><span class="p">,</span>  <span class="n">default_flow_style</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> 
 </pre></div>
@@ -15181,7 +15184,28 @@ gcloud ml-engine jobs submit training %JOBNAME% ^
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load</span> hyperp_config.yaml
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load hyperp_config.yaml</span>
+<span class="n">trainingInput</span><span class="p">:</span>
+  <span class="n">hyperparameters</span><span class="p">:</span>
+    <span class="n">goal</span><span class="p">:</span> <span class="n">MAXIMIZE</span>
+    <span class="n">hyperparameterMetricTag</span><span class="p">:</span> <span class="n">accuracy</span>
+    <span class="n">maxTrials</span><span class="p">:</span> <span class="mi">30</span>
+    <span class="n">maxParallelTrials</span><span class="p">:</span> <span class="mi">4</span>
+    <span class="n">algorithm</span><span class="p">:</span> <span class="n">ALGORITHM_UNSPECIFIED</span>
+    <span class="n">params</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">parameterName</span><span class="p">:</span> <span class="n">train_batch_size</span>
+        <span class="nb">type</span><span class="p">:</span> <span class="n">INTEGER</span>
+        <span class="n">minValue</span><span class="p">:</span> <span class="mi">64</span>
+        <span class="n">maxValue</span><span class="p">:</span> <span class="mi">512</span>
+        <span class="n">scaleType</span><span class="p">:</span> <span class="n">UNIT_LINEAR_SCALE</span>
+      <span class="o">-</span> <span class="n">parameterName</span><span class="p">:</span> <span class="n">hidden_units</span>
+        <span class="nb">type</span><span class="p">:</span> <span class="n">CATEGORICAL</span>
+        <span class="n">categoricalValues</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;256 128 64&quot;</span><span class="p">,</span> <span class="s2">&quot;128 64 32&quot;</span><span class="p">,</span> <span class="s2">&quot;512 256 128 64&quot;</span><span class="p">,</span> <span class="s2">&quot;256 128 64 32&quot;</span><span class="p">]</span>
+      <span class="o">-</span> <span class="n">parameterName</span><span class="p">:</span> <span class="n">learning_rate</span>
+        <span class="nb">type</span><span class="p">:</span> <span class="n">DOUBLE</span>
+        <span class="n">minValue</span><span class="p">:</span> <span class="mf">0.0001</span>
+        <span class="n">maxValue</span><span class="p">:</span> <span class="mf">0.1</span>
+        <span class="n">scaleType</span><span class="p">:</span> <span class="n">UNIT_LOG_SCALE</span>
 </pre></div>
 
     </div>
@@ -15329,7 +15353,9 @@ gcloud ml-engine jobs submit training %JOBNAME_HYPER% ^
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">jobname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;JOBNAME_HYPER&#39;</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;JOBNAME_HYPER&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;mnist_191128_142331_hyper&#39;</span> <span class="c1">#&#39;mnist_{}_hyper&#39;.format(&#39;191128_142331&#39;) #mnist_191128_142331_hyper</span>
+<span class="n">jobname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;JOBNAME_HYPER&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">jobname</span><span class="p">)</span>
 <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://ml.googleapis.com/v1/projects/</span><span class="si">{project}</span><span class="s1">/jobs/</span><span class="si">{jobname}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="n">PROJECT</span><span class="p">,</span> <span class="n">jobname</span><span class="o">=</span><span class="n">jobname</span><span class="p">)</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
    <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
@@ -15413,8 +15439,9 @@ gcloud ml-engine jobs submit training %JOBNAME_HYPER% ^
     <span class="k">except</span> <span class="n">errors</span><span class="o">.</span><span class="n">HttpError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;There was an error creating the model. Check the details:&#39;</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">err</span><span class="o">.</span><span class="n">_get_reason</span><span class="p">())</span>
+        <span class="k">raise</span>
     <span class="k">return</span> <span class="n">response_dict</span>
-<span class="c1">#get_job_results(os.environ[&#39;JOBNAME_HYPER&#39;])</span>
+<span class="n">get_job_results</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;JOBNAME_HYPER&#39;</span><span class="p">])</span>
 </pre></div>
 
     </div>
@@ -15478,7 +15505,7 @@ gcloud ml-engine jobs submit training %JOBNAME_HYPER% ^
 <span class="n">data</span> <span class="o">=</span> <span class="n">blob</span><span class="o">.</span><span class="n">download_as_string</span><span class="p">()</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="k">with</span> <span class="n">data</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">with</span> <span class="n">data</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span> 
     <span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;x_train&#39;</span><span class="p">],</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;y_train&#39;</span><span class="p">]</span>
     <span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;x_test&#39;</span><span class="p">],</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;y_test&#39;</span><span class="p">]</span>
 </pre></div>
@@ -15580,7 +15607,7 @@ gcloud ml-engine jobs submit training %JOBNAME_HYPER% ^
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">env</span> MODEL_LOCATION={models[-1]}
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">env</span> MODEL_LOCATION={models[-1]} 
 </pre></div>
 
     </div>
@@ -15613,7 +15640,7 @@ gcloud ml-engine jobs submit training %JOBNAME_HYPER% ^
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">env</span> MODEL_NAME &quot;MNIST_MLENGINE&quot;
-<span class="o">%</span><span class="k">env</span> MODEL_VERSION &quot;v1&quot; 
+<span class="o">%</span><span class="k">env</span> MODEL_VERSION &quot;v2&quot;  
 </pre></div>
 
     </div>
@@ -15936,7 +15963,7 @@ gcloud ml-engine jobs submit prediction %JOBNAME_BATCH_PRED%  --model=MNIST_MLEN
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">files</span> <span class="o">=</span> <span class="o">!</span>gsutil ls %OUTPUT_PATH%
-<span class="nb">print</span><span class="p">(</span><span class="n">files</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">files</span><span class="p">)</span>  
 </pre></div>
 
     </div>
