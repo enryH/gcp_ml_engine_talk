@@ -4,5 +4,4 @@ env-name: gcp_dl
 pkg-name: pkg_mnist_fnn
 project-id: bold-circuit-254311
 region: europe-west1
-testdatafile: data/mnist/json/ml_engine_testdatafile_N4.json
 tf-version: '1.13'
